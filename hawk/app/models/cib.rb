@@ -2,7 +2,6 @@
 # See COPYING for license.
 
 require 'util'
-require 'natcmp'
 require 'rexml/document' unless defined? REXML::Document
 require 'rexml/xpath' unless defined? REXML::XPath
 
