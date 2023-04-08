@@ -2,7 +2,7 @@ require 'fileutils'
 
 ROOT = File.expand_path("../../", __FILE__)
 
-@environment = ENV["HAWK_ENV"] || "production"
+@environment = ENV["HAWK_ENV"] || "development"
 @bind = ENV["HAWK_BIND"] || "unix:///usr/share/hawk/tmp/hawk.sock"
 
 bind "tcp://0.0.0.0:3000"
@@ -11,12 +11,12 @@ environment @environment
 
 tag "hawk"
 
-#daemonize false
+# daemonize false
 prune_bundler false
 
-threads 0, 1
+# threads 0, 1
 
-workers 1
+# workers 1
 
 # Use the `preload_app!` method when specifying a `workers` number.
 # This directive tells Puma to first boot the application and load code
@@ -24,7 +24,7 @@ workers 1
 # process behavior so workers use less memory.
 preload_app!
 
-worker_timeout 60
+# worker_timeout 60
 
 pidfile File.join(ROOT, "tmp", "pids", "puma.pid")
 state_path File.join(ROOT, "tmp", "pids", "puma.state")
