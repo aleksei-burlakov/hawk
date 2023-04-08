@@ -2,6 +2,7 @@
 # See COPYING for license.
 
 require 'util'
+require 'cibtools'
 require 'rexml/document' unless defined? REXML::Document
 require 'rexml/xpath' unless defined? REXML::XPath
 
