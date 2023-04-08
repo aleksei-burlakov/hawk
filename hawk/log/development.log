@@ -144,3 +144,128 @@ ActionController::RoutingError (uninitialized constant PagesController
             ^^^^^):
   
 app/lib/hawk/secure_cookies.rb:11:in `call'
+Started GET "/" for 127.0.0.1 at 2023-04-08 19:24:17 +0200
+  
+ActionController::RoutingError (uninitialized constant PagesController
+
+      Object.const_get(camel_cased_word)
+            ^^^^^^^^^^
+
+            raise MissingController.new(error.message, error.name)
+            ^^^^^):
+  
+app/lib/hawk/secure_cookies.rb:11:in `call'
+Started GET "/" for 127.0.0.1 at 2023-04-08 19:24:17 +0200
+  
+ActionController::RoutingError (uninitialized constant PagesController
+
+      Object.const_get(camel_cased_word)
+            ^^^^^^^^^^
+
+            raise MissingController.new(error.message, error.name)
+            ^^^^^):
+  
+app/lib/hawk/secure_cookies.rb:11:in `call'
+Started GET "/" for 127.0.0.1 at 2023-04-08 19:24:19 +0200
+  
+ActionController::RoutingError (uninitialized constant PagesController
+
+      Object.const_get(camel_cased_word)
+            ^^^^^^^^^^
+
+            raise MissingController.new(error.message, error.name)
+            ^^^^^):
+  
+app/lib/hawk/secure_cookies.rb:11:in `call'
+Started GET "/" for 127.0.0.1 at 2023-04-08 19:24:26 +0200
+  
+ActionController::RoutingError (uninitialized constant PagesController
+
+      Object.const_get(camel_cased_word)
+            ^^^^^^^^^^
+
+            raise MissingController.new(error.message, error.name)
+            ^^^^^):
+  
+app/lib/hawk/secure_cookies.rb:11:in `call'
+Started GET "/" for 127.0.0.1 at 2023-04-08 19:24:27 +0200
+  
+ActionController::RoutingError (uninitialized constant PagesController
+
+      Object.const_get(camel_cased_word)
+            ^^^^^^^^^^
+
+            raise MissingController.new(error.message, error.name)
+            ^^^^^):
+  
+app/lib/hawk/secure_cookies.rb:11:in `call'
+Started GET "/" for 127.0.0.1 at 2023-04-08 19:24:27 +0200
+  
+ActionController::RoutingError (uninitialized constant PagesController
+
+      Object.const_get(camel_cased_word)
+            ^^^^^^^^^^
+
+            raise MissingController.new(error.message, error.name)
+            ^^^^^):
+  
+app/lib/hawk/secure_cookies.rb:11:in `call'
+Started GET "/" for 127.0.0.1 at 2023-04-08 19:24:42 +0200
+  
+ActionController::RoutingError (uninitialized constant PagesController
+
+      Object.const_get(camel_cased_word)
+            ^^^^^^^^^^
+
+            raise MissingController.new(error.message, error.name)
+            ^^^^^):
+  
+app/lib/hawk/secure_cookies.rb:11:in `call'
+Started GET "/" for 127.0.0.1 at 2023-04-08 19:27:17 +0200
+  
+Zeitwerk::NameError (expected file /root/Workspace/hawk/hawk/app/lib/cibtools.rb to define constant Cibtools, but didn't
+
+      raise Zeitwerk::NameError.new(msg, cref.last)
+      ^^^^^):
+  
+app/models/cib.rb:5:in `<top (required)>'
+app/controllers/application_controller.rb:27:in `<class:ApplicationController>'
+app/controllers/application_controller.rb:4:in `<top (required)>'
+app/controllers/pages_controller.rb:4:in `<top (required)>'
+app/lib/hawk/secure_cookies.rb:11:in `call'
+Started GET "/" for 127.0.0.1 at 2023-04-08 19:27:18 +0200
+  
+Zeitwerk::NameError (expected file /root/Workspace/hawk/hawk/app/lib/natcmp.rb to define constant Natcmp, but didn't
+
+      raise Zeitwerk::NameError.new(msg, cref.last)
+      ^^^^^):
+  
+app/models/cib.rb:6:in `<top (required)>'
+app/controllers/application_controller.rb:27:in `<class:ApplicationController>'
+app/controllers/application_controller.rb:4:in `<top (required)>'
+app/controllers/pages_controller.rb:4:in `<top (required)>'
+app/lib/hawk/secure_cookies.rb:11:in `call'
+Started GET "/" for 127.0.0.1 at 2023-04-08 19:27:27 +0200
+  
+Zeitwerk::NameError (expected file /root/Workspace/hawk/hawk/app/lib/cibtools.rb to define constant Cibtools, but didn't
+
+      raise Zeitwerk::NameError.new(msg, cref.last)
+      ^^^^^):
+  
+app/models/cib.rb:5:in `<top (required)>'
+app/controllers/application_controller.rb:27:in `<class:ApplicationController>'
+app/controllers/application_controller.rb:4:in `<top (required)>'
+app/controllers/pages_controller.rb:4:in `<top (required)>'
+app/lib/hawk/secure_cookies.rb:11:in `call'
+Started GET "/" for 127.0.0.1 at 2023-04-08 19:28:30 +0200
+  
+Zeitwerk::NameError (expected file /root/Workspace/hawk/hawk/app/lib/cibtools.rb to define constant Cibtools, but didn't
+
+      raise Zeitwerk::NameError.new(msg, cref.last)
+      ^^^^^):
+  
+app/models/cib.rb:5:in `<top (required)>'
+app/controllers/application_controller.rb:27:in `<class:ApplicationController>'
+app/controllers/application_controller.rb:4:in `<top (required)>'
+app/controllers/pages_controller.rb:4:in `<top (required)>'
+app/lib/hawk/secure_cookies.rb:11:in `call'

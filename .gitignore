@@ -12,6 +12,7 @@
 hawk*.tar.bz2
 .vagrant
 *.vdi
+*.log
 
 # ./scripts
 scripts/hawk.suse
