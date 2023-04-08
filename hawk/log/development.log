@@ -19,3 +19,128 @@ Started GET "/login" for 127.0.0.1 at 2023-04-08 15:39:28 +0200
 ActionController::RoutingError (No route matches [GET] "/login"):
   
 app/lib/hawk/secure_cookies.rb:11:in `call'
+Started GET "/" for 127.0.0.1 at 2023-04-08 16:09:28 +0200
+  
+ActionController::RoutingError (uninitialized constant PagesController
+
+      Object.const_get(camel_cased_word)
+            ^^^^^^^^^^
+
+            raise MissingController.new(error.message, error.name)
+            ^^^^^):
+  
+app/lib/hawk/secure_cookies.rb:11:in `call'
+Started GET "/favicon.ico" for 127.0.0.1 at 2023-04-08 16:09:28 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+app/lib/hawk/secure_cookies.rb:11:in `call'
+Started GET "/" for 127.0.0.1 at 2023-04-08 16:09:33 +0200
+  
+ActionController::RoutingError (uninitialized constant PagesController
+
+      Object.const_get(camel_cased_word)
+            ^^^^^^^^^^
+
+            raise MissingController.new(error.message, error.name)
+            ^^^^^):
+  
+app/lib/hawk/secure_cookies.rb:11:in `call'
+Started GET "/" for 127.0.0.1 at 2023-04-08 16:09:47 +0200
+  
+ActionController::RoutingError (uninitialized constant PagesController
+
+      Object.const_get(camel_cased_word)
+            ^^^^^^^^^^
+
+            raise MissingController.new(error.message, error.name)
+            ^^^^^):
+  
+app/lib/hawk/secure_cookies.rb:11:in `call'
+Started GET "/favicon.ico" for 127.0.0.1 at 2023-04-08 16:09:47 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+app/lib/hawk/secure_cookies.rb:11:in `call'
+Started GET "/" for 127.0.0.1 at 2023-04-08 16:09:49 +0200
+  
+ActionController::RoutingError (uninitialized constant PagesController
+
+      Object.const_get(camel_cased_word)
+            ^^^^^^^^^^
+
+            raise MissingController.new(error.message, error.name)
+            ^^^^^):
+  
+app/lib/hawk/secure_cookies.rb:11:in `call'
+Started GET "/" for 127.0.0.1 at 2023-04-08 16:10:56 +0200
+  
+ActionController::RoutingError (uninitialized constant PagesController
+
+      Object.const_get(camel_cased_word)
+            ^^^^^^^^^^
+
+            raise MissingController.new(error.message, error.name)
+            ^^^^^):
+  
+app/lib/hawk/secure_cookies.rb:11:in `call'
+Started GET "/" for 127.0.0.1 at 2023-04-08 16:11:34 +0200
+  
+ActionController::RoutingError (uninitialized constant PagesController
+
+      Object.const_get(camel_cased_word)
+            ^^^^^^^^^^
+
+            raise MissingController.new(error.message, error.name)
+            ^^^^^):
+  
+app/lib/hawk/secure_cookies.rb:11:in `call'
+Started GET "/" for 127.0.0.1 at 2023-04-08 16:12:03 +0200
+  
+ActionController::RoutingError (uninitialized constant PagesController
+
+      Object.const_get(camel_cased_word)
+            ^^^^^^^^^^
+
+            raise MissingController.new(error.message, error.name)
+            ^^^^^):
+  
+app/lib/hawk/secure_cookies.rb:11:in `call'
+Started GET "/" for 127.0.0.1 at 2023-04-08 16:14:36 +0200
+  
+ActionController::RoutingError (uninitialized constant PagesController
+
+      Object.const_get(camel_cased_word)
+            ^^^^^^^^^^
+
+            raise MissingController.new(error.message, error.name)
+            ^^^^^):
+  
+app/lib/hawk/secure_cookies.rb:11:in `call'
+Started GET "/" for 127.0.0.1 at 2023-04-08 16:14:41 +0200
+  
+ActionController::RoutingError (uninitialized constant PagesController
+
+      Object.const_get(camel_cased_word)
+            ^^^^^^^^^^
+
+            raise MissingController.new(error.message, error.name)
+            ^^^^^):
+  
+app/lib/hawk/secure_cookies.rb:11:in `call'
+Started GET "/favicon.ico" for 127.0.0.1 at 2023-04-08 16:14:41 +0200
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+app/lib/hawk/secure_cookies.rb:11:in `call'
+Started GET "/" for 127.0.0.1 at 2023-04-08 16:14:43 +0200
+  
+ActionController::RoutingError (uninitialized constant PagesController
+
+      Object.const_get(camel_cased_word)
+            ^^^^^^^^^^
+
+            raise MissingController.new(error.message, error.name)
+            ^^^^^):
+  
+app/lib/hawk/secure_cookies.rb:11:in `call'
