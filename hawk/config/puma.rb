@@ -14,9 +14,9 @@ tag "hawk"
 # daemonize false
 prune_bundler false
 
-# threads 0, 1
+threads 0, 1
 
-# workers 1
+workers 1
 
 # Use the `preload_app!` method when specifying a `workers` number.
 # This directive tells Puma to first boot the application and load code
@@ -24,7 +24,7 @@ prune_bundler false
 # process behavior so workers use less memory.
 preload_app!
 
-# worker_timeout 60
+worker_timeout 60
 
 pidfile File.join(ROOT, "tmp", "pids", "puma.pid")
 state_path File.join(ROOT, "tmp", "pids", "puma.state")
