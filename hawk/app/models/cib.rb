@@ -546,17 +546,17 @@ class Cib
     # TODO(should): This gloms together all cluster property sets; really
     # probably only want cib-bootstrap-options?
     @xml.elements.each('cib/configuration/crm_config//nvpair') do |p|
-      @crm_config[p.attributes['name'].underscore.to_sym] = CibTools.get_xml_attr(p, 'value')
+      @crm_config[p.attributes['name'].underscore.to_sym] = Cibtools.get_xml_attr(p, 'value')
     end
 
     @rsc_defaults = {}
     @xml.elements.each('cib/configuration/rsc_defaults//nvpair') do |p|
-      @rsc_defaults[p.attributes['name'].underscore.to_sym] = CibTools.get_xml_attr(p, 'value')
+      @rsc_defaults[p.attributes['name'].underscore.to_sym] = Cibtools.get_xml_attr(p, 'value')
     end
 
     @op_defaults = {}
     @xml.elements.each('cib/configuration/op_defaults//nvpair') do |p|
-      @op_defaults[p.attributes['name'].underscore.to_sym] = CibTools.get_xml_attr(p, 'value')
+      @op_defaults[p.attributes['name'].underscore.to_sym] = Cibtools.get_xml_attr(p, 'value')
     end
 
     is_managed_default = true
@@ -574,7 +574,7 @@ class Cib
       remote = n.attributes['type'] == 'remote'
       ns = @xml.elements["cib/status/node_state[@uname='#{uname}']"]
       if ns
-        state = CibTools.determine_online_status(ns, crm_config[:stonith_enabled])
+        state = Cibtools.determine_online_status(ns, crm_config[:stonith_enabled])
         selems = n.elements["instance_attributes/nvpair[@name='standby']"]
         # TODO(could): is the below actually a sane test?
         if selems && ['true', 'yes', '1', 'on'].include?(selems.attributes['value'])
@@ -858,7 +858,7 @@ class Cib
         lrm_resource.elements.each('lrm_rsc_op') do |op|
           ops << op
         end
-        ops.sort { |a, b| CibTools.sort_ops(a, b) }.each do |op|
+        ops.sort { |a, b| Cibtools.sort_ops(a, b) }.each do |op|
           operation = op.attributes['operation']
           id = op.attributes['id']
           call_id = op.attributes['call-id'].to_i
@@ -956,7 +956,7 @@ class Cib
                     resource: "<strong>#{rsc_id}</strong>".html_safe,
                     call_id: op.attributes['call-id'],
                     op: "<strong>#{operation}</strong>".html_safe,
-                    rc_mapping: CibTools.rc_desc(rc_code),
+                    rc_mapping: Cibtools.rc_desc(rc_code),
                     rc_code: rc_code,
                     exit_reason: exit_reason.blank? ? 'none' : exit_reason,
                     fail_start: real_start || '0000-00-00 00:00'
@@ -976,10 +976,10 @@ class Cib
             end
           end
 
-          state = CibTools.op_rc_to_state operation, rc_code, state
+          state = Cibtools.op_rc_to_state operation, rc_code, state
 
           # check for guest nodes
-          if !op.attributes['on_node'].nil? && [:master, :started].include?(state) && lrm_resource.attributes['container'].nil? 
+          if !op.attributes['on_node'].nil? && [:master, :started].include?(state) && lrm_resource.attributes['container'].nil?
             @nodes.select { |n| n[:uname] == rsc_id }.each do |guest|
               guest[:host] = node[:uname]
               guest[:remote] = true
@@ -1016,7 +1016,7 @@ class Cib
       if rsc
         rsc_state = rsc[:state]
       elsif n[:host]
-        rsc_state = CibTools.rsc_state_from_lrm_rsc_op(@xml, n[:host], n[:id])
+        rsc_state = Cibtools.rsc_state_from_lrm_rsc_op(@xml, n[:host], n[:id])
       end
       # node has a matching resource:
       # get state from resource.rb
@@ -1058,7 +1058,7 @@ class Cib
     @dc.slice!(0, s + 1) if s
     @dc = _('Unknown') if @dc.empty?
 
-    @epoch = CibTools.epoch_string @xml.root
+    @epoch = Cibtools.epoch_string @xml.root
 
     # Tickets will always have a granted property (boolean).  They may also
     # have a last-granted timestamp too, but this will only be present if a
@@ -1116,7 +1116,7 @@ class Cib
       @booth[:sites].sort!
       booth_resource_id = nil
       @xml.elements.each("cib/configuration//primitive[@type='IPaddr2']/instance_attributes/nvpair[@name='ip']") do |elem|
-        ip = CibTools.get_xml_attr(elem, "value")
+        ip = Cibtools.get_xml_attr(elem, "value")
         next unless @booth[:sites].include?(ip)
 
         # Get actual value of resource after applying
