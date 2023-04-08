@@ -1,5 +1,0 @@
----
-hacluster: !ruby/struct:Struct::ApiToken
-  username: hacluster
-  api_token: a123456789
-  expires: 2388665373
