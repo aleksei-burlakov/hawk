@@ -500,7 +500,7 @@ class Cib
         return
       end
     else
-      unless File.exists?('/usr/sbin/crm_mon')
+      unless File.exist?('/usr/sbin/crm_mon')
         error _('Pacemaker does not appear to be installed (%{cmd} not found)') % {
           cmd: '/usr/sbin/crm_mon' }
         init_offline_cluster id, user, use_file
@@ -1109,7 +1109,7 @@ class Cib
       # (although they should no longer be set like this since the
       # config format changed, but still doesn't hurt)
       @booth["#{m[1]}s".to_sym] << v.split(";")[0]
-    end if File.exists?("/etc/booth/booth.conf")
+    end if File.exist?("/etc/booth/booth.conf")
 
     # Figure out if we're a site in a geo cluster (based on existence of
     # IPaddr2 resource with same IP as a site in booth.conf)
