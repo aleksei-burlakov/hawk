@@ -2,10 +2,10 @@ require 'fileutils'
 
 ROOT = File.expand_path("../../", __FILE__)
 
-@environment = ENV["HAWK_ENV"] || "development"
+@environment = ENV["HAWK_ENV"] || "production"
 @bind = ENV["HAWK_BIND"] || "unix:///usr/share/hawk/tmp/hawk.sock"
 
-bind "tcp://0.0.0.0:3000"
+bind @bind
 directory ROOT
 environment @environment
 
