@@ -1,5 +1,5 @@
 require 'util'
-require 'natcmp'
+require 'string'
 
 module Api
   module V1

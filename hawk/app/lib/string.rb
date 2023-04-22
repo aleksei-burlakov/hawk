@@ -2,7 +2,7 @@
 # See COPYING for license.
 
 # Sourced from http://www.gitorious.org/opensuse/build-service/blobs/master/src/api/lib/natcmp.rb
-class Natcmp
+class String
 
   # 'Natural order' comparison of strings, e.g.
   #
