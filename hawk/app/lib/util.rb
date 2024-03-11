@@ -451,4 +451,20 @@ module Util
     end
   end
   module_function :map_value
+
+  # To use this function, add
+  # File.write("/root/Workspace/hawk.log", "caller=#{Util.filter_caller(caller)}\n\n", mode: "a+")
+  # Somewhere in the code
+  def filter_caller(caller1)
+    result = ''
+    for s in caller1
+      if s[0..15] == '/usr/share/hawk/'
+        result += s[16..-1]
+        result += "\n"
+      end
+    end
+    result
+  end
+  module_function :filter_caller
+
 end
