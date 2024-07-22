@@ -105,6 +105,7 @@ class Wizard
     @actions = []
     @errors = []
     @output = nil
+    byebug
     CrmEvents.instance.push command_string
     CrmScript.run ["run", @name, @params], rootpw do |result, err|
       @errors << err if err
@@ -113,6 +114,7 @@ class Wizard
         @errors << result["error"] if result.has_key? "error"
         result['text'].gsub!(/\t/, "    ") if result.has_key? "text"
         @actions << result unless result.has_key? "error"
+        byebug
         @output = result["output"] if result.has_key? "output"
       end
     end

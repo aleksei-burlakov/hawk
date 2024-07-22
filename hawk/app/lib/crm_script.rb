@@ -40,6 +40,11 @@ module CrmScript
   module_function :cleanerr
 
   def run(jsondata, rootpw)
+    # this run function pacs the command into a tmp file
+    # for example 'run health' --> 'script json "[\"run\",\"health\",{}]'
+    # and instead of 'crm script run health'
+    # will be called 'crm -f /tmp/file123'
+    # where /tmp/file123 contains 'script json "[\"run\",\"health\",{}]'
     user = current_user
     cmd = crmsh_escape(JSON.dump(jsondata))
     tmpf = Tempfile.new 'crmscript'
