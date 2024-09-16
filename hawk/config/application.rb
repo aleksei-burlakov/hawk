@@ -44,6 +44,11 @@ module Hawk
       config.middleware.use Rack::Deflater
     end
 
+    JsRoutes.setup do |config|
+      config.module_type = nil
+      config.namespace = "Routes"
+    end
+
     config.x.hawk_is_sles = system("cat /etc/os-release | grep 'ID=.*sles' >/dev/null 2>&1")
 
     def lookup_daemon_dir
