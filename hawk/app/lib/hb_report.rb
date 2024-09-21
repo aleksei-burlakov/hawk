@@ -38,6 +38,16 @@ class HbReport
     Util.child_active(@pidfile)
   end
 
+  def report_generated?
+    rc = File.read(@exitfile)
+    return { code: true, msg: '' } if rc=='0'
+
+    lt = lasttime
+    errfile = Rails.root.join('tmp', 'reports', "hawk-#{lt[0]}-#{lt[1]}.stderr").to_s
+    err_msg = File.read(errfile).split("\n")[0]
+    return { code: false, msg: err_msg }
+  end
+
   def cancel!
     pid = File.new(@pidfile).read.to_i
     return 0 if pid <= 0
@@ -119,4 +129,5 @@ class HbReport
     f.close
     Process.detach(pid)
   end
+
 end
