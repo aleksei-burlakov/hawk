@@ -36,6 +36,24 @@ $(function() {
     }, REFRESH_INTERVAL);
   };
 
+  $('#reports').on('click', '#test-routes-foo-report-path', function() {
+    // NB: Routes.foo_reports_path() means call function
+    // foo in the reports_controller
+    // the  _path meanth nothing
+    // Beside, the method should be in the routes.rb
+    // To exercise Routes.foo_reports_path() here do:
+    // goto https://192.168.122.XYZ:7630/reports
+    // then click the red button 'Test Routes.foo_report_path' (this is the client side)
+    // this would call reports_controller.rb::foo() on the server side
+    // with {mymessage: "Privet Mir"}. The server side will append '!!!'
+    // and come back here (to the client) with data.wtf=='Privet Mir!!!'
+    // And there will appear a red prompt message 'Privet Mir!!!'
+    // UPD: if there are updates see the branch Routes.foo_reports_path
+    $.getJSON(Routes.foo_reports_path({mymessage: "Privet Mir"}), {}, function(data) {
+      $.growl({ message: data.wtf },{ type: 'danger' });
+    });
+  });
+
   $('#reports #report-running').on('click', '#cancel-report', function() {
     $.getJSON(Routes.cancel_reports_path(), {}, function(data) {
       if (data.error) {

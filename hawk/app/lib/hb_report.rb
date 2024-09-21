@@ -119,4 +119,5 @@ class HbReport
     f.close
     Process.detach(pid)
   end
+
 end

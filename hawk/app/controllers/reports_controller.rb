@@ -103,6 +103,15 @@ class ReportsController < ApplicationController
     end
   end
 
+  def foo
+    respond_to do |format|
+      format.html
+      format.json do
+        render json: { wtf: params[:mymessage] + "!!!" }
+      end
+    end
+  end
+
   def running
     respond_to do |format|
       format.json do
