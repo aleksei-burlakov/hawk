@@ -9,15 +9,21 @@ class WizardsController < ApplicationController
   before_action :cluster_online
 
   def index
+    # all wizards
     @wizards = Wizard.all
 
+    # byebug # 1. Here we come first (CONFIGURAION->Wizards)
     respond_to do |format|
       format.html
     end
   end
 
   def show
+    # 2. Here we come second
+    # (CONFIGURAION->Wizards->Basics->Verify health and configuration)
+    # byebug
     session[:hawk_wizard] = params[:id]
+    # only one wizard (@name="health", @shortdesc="Verify health and configuration")
     @wizard = Wizard.find params[:id]
     pa = Rails.cache.read("#{session.id}-#{params[:id]}")
     @wizard.update_step_values(@wizard, pa) if pa
@@ -28,6 +34,9 @@ class WizardsController < ApplicationController
   end
 
   def update
+    # 3. Here we come third
+    # (CONFIGURAION->Wizards->Basics->Verify health and configuration->Verify)
+    # byebug
     @wizard = Wizard.find params[:id]
     pa = build_scriptparams(params.permit!)
     @pa = pa
@@ -46,14 +55,24 @@ class WizardsController < ApplicationController
     if pa.nil?
       render json: [_("Session has expired")], status: :unprocessable_entity
     else
-      @wizard = Wizard.find params[:id]
-      @wizard.verify(pa)
+      # STOPPED HERE
+      # 4. Here we come fourth
+      # (CONFIGURAION->Wizards->Basics->Verify health and configuration->Verify->Apply)
+      byebug
+      @wizard = Wizard.find params[:id] # -> capture3(crm script show health)
+      @wizard.verify(pa) # -> capture3(crm script verify health)
       if @wizard.errors.length > 0
         render json: @wizard.errors.to_json, status: :unprocessable_entity
       elsif current_cib.sim?
         render json: [_("Wizard cannot be applied when the simulator is active")], status: :unprocessable_entity
       else
-        @wizard.run(pa)
+        @wizard.run(pa) # -> capture3(crm script run health)
+        byebug
+        # The problem description:
+        # crm script run health && echo $?  --> 0
+        # even if the script has broken
+        # (to break add '-D' in "'-Z', 'health-report'"
+        # in /usr/share/crmsh/scripts/health/hahealth.py)
         if @wizard.errors.length > 0
           render json: @wizard.errors.to_json, status: :unprocessable_entity
         else
