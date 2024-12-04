@@ -27,7 +27,7 @@ Rails.application.configure do
 
   config.cache_store = :memory_store
 
-  config.assets.debug = true
+  config.assets.debug = false
   config.assets.raise_runtime_errors = true
   config.assets.js_compressor = nil
   config.assets.css_compressor = nil

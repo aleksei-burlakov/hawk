@@ -38,7 +38,7 @@ else
   gem "virtus", version: "~> 1.0"
   require "virtus"
 
-  gem "js-routes", version: ">= 1.3.3"
+  gem "js-routes", version: ">= 2.0.0"
   require "js-routes"
 
   gem "fast_gettext", version: "~> 1.4"
