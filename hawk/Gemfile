@@ -16,9 +16,9 @@
 # trying to build packaged software?
 #
 
-gem "rails", ">= 5.1"
+gem "rails", "~> 7"
 gem "puma", ">= 4.3.5"
-gem "sass-rails", ">= 5.0"
+gem "sass-rails", "~> 5"
 gem "virtus", ">= 1.0.1"
 gem "js-routes", ">= 2.0.0"
 gem "fast_gettext", ">= 1.4"
