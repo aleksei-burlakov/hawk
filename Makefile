@@ -38,8 +38,8 @@ SBINDIR = /usr/sbin
 
 all: scripts/hawk.$(INIT_STYLE) scripts/hawk.service scripts/hawk-backend.service scripts/server.json tools
 	(cd hawk; \
-	 RAILS_ENV=production TEXTDOMAIN=hawk bin/rake gettext:pack; \
-	 RAILS_ENV=production bin/rake assets:precompile)
+	 SOURCE_DATE_EPOCH=1738944332 RAILS_ENV=production TEXTDOMAIN=hawk bin/rake gettext:pack; \
+	 SOURCE_DATE_EPOCH=1738944332 RAILS_ENV=production bin/rake assets:precompile)
 
 %:: %.in
 	sed \
