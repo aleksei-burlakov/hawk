@@ -10,6 +10,7 @@ class ApplicationController < ActionController::Base
   layout :detect_current_layout
 
   around_action :inject_current_user
+  around_action :inject_current_pass
   around_action :inject_current_cib
   before_action :set_users_locale
   before_action :set_current_home
@@ -23,6 +24,7 @@ class ApplicationController < ActionController::Base
   helper_method :production_cib
   helper_method :current_cib
   helper_method :current_user
+  helper_method :current_pass
 
   rescue_from Cib::CibError do |e|
     respond_to do |format|
@@ -59,7 +61,7 @@ class ApplicationController < ActionController::Base
   def current_cib
     if current_user
       @current_cib ||= begin
-        Cib.new(params[:cib_id] || production_cib, current_user, params[:debug] == "file", cookies[:stonithwarning].nil? || cookies[:stonithwarning] == true)
+        Cib.new(params[:cib_id] || production_cib, current_user, current_pass, params[:debug] == "file", cookies[:stonithwarning].nil? || cookies[:stonithwarning] == true)
       end
     end
   end
@@ -96,6 +98,12 @@ class ApplicationController < ActionController::Base
     yield
   end
 
+  def inject_current_pass
+    current_controller = self
+    Thread.current[:current_pass] = proc { current_controller.send(:current_pass) }
+    yield
+  end
+
   def set_users_locale
     available = [params[:locale], cookies[:locale], default_locale].compact.first
     I18n.locale = FastGettext.set_locale(available)
@@ -113,7 +121,7 @@ class ApplicationController < ActionController::Base
   def cors_set_access_control_headers
     response.headers['Content-Security-Policy'] = "frame-ancestors 'self'"
     if request.headers['Origin']
-      response.headers['Access-Control-Allow-Origin'] = request.headers["Origin"]
+      response.headers['Access-Control-Allow-Origin'] = ENV["HAWK_ACCESS_CONTROL_ALLOW_ORIGIN"] || request.headers["Origin"]
       response.headers['Access-Control-Allow-Credentials'] = 'true'
       response.headers['Access-Control-Allow-Methods'] = 'POST, GET, PUT, DELETE, OPTIONS'
       response.headers['Access-Control-Allow-Headers'] = 'Origin, Content-Type, Accept, Authorization, X-CSRF-Token, Token'
@@ -123,7 +131,7 @@ class ApplicationController < ActionController::Base
 
   def cors_preflight_check
     if request.method == 'OPTIONS' && request.headers['Origin']
-      response.headers["Access-Control-Allow-Origin"] = request.headers["Origin"]
+      response.headers['Access-Control-Allow-Origin'] = ENV["HAWK_ACCESS_CONTROL_ALLOW_ORIGIN"] || request.headers["Origin"]
       response.headers['Access-Control-Allow-Credentials'] = 'true'
       response.headers['Access-Control-Allow-Methods'] = 'POST, GET, PUT, DELETE, OPTIONS'
       response.headers['Access-Control-Allow-Headers'] = 'X-Requested-With, X-Prototype-Version, X-CSRF-Token, Token'
@@ -171,6 +179,10 @@ class ApplicationController < ActionController::Base
 
   def current_user
     @current_user ||= session[:username] || login_from_cookie
+  end
+
+  def current_pass
+    @current_pass ||= session[:password]
   end
 
   def is_god?

@@ -27,6 +27,7 @@ class SessionsController < ApplicationController
       if @session.valid?
         reset_session
         session[:username] = @session.username
+        session[:password] = @session.password
 
         # generate random value, store in attrd_updater (1024 Bits)
         value = SecureRandom.hex(128)
@@ -42,7 +43,11 @@ class SessionsController < ApplicationController
         end
       else
         format.html do
-          flash.now[:alert] = @session.errors.first.last
+          if Gem.loaded_specs['rails'].version >= Gem::Version.new("6.1")
+            flash.now[:alert] = @session.errors.first.message
+          else
+            flash.now[:alert] = @session.errors.first.last
+          end
           render action: 'new'
         end
         format.json do
@@ -66,6 +71,7 @@ class SessionsController < ApplicationController
     cookies.delete :hawk_remember_me_id
     cookies.delete :hawk_remember_me_key
     session[:username] = nil
+    session[:password] = nil
     reset_session
 
     respond_to do |format|

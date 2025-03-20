@@ -1,6 +1,0 @@
-#!/usr/bin/ruby.ruby2.5
-# Copyright (c) 2009-2015 Tim Serong <tserong@suse.com>
-# See COPYING for license.
-
-ENV["BUNDLE_GEMFILE"] ||= File.expand_path("../../Gemfile", __FILE__)
-load Gem.bin_path("bundler", "bundle")
