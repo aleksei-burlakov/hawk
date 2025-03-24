@@ -15,6 +15,7 @@
 # manage a Ruby application's gems", it's an absolute menace if you're
 # trying to build packaged software?
 #
+
 gem "rails", ">= 8.0"
 gem "puma", ">= 4.3.5"
 gem "sass-rails", ">= 6.0"
