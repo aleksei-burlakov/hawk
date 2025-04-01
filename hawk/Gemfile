@@ -15,7 +15,11 @@
 # manage a Ruby application's gems", it's an absolute menace if you're
 # trying to build packaged software?
 #
+source 'https://rubygems.org'
+
 gem "rails", ">= 8.0"
+gem 'ffi', '1.17.1', platforms: :ruby
+gem 'nokogiri', '1.18.5', platforms: :ruby
 gem "puma", ">= 4.3.5"
 gem "sass-rails", ">= 6.0"
 gem "virtus", ">= 1.0.1"
