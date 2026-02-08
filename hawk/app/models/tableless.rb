@@ -89,7 +89,7 @@ class Tableless
       default: "false",
       longdesc: _("Resources in maintenance mode are not monitored by the cluster.")
     },
-    "migration-threshold" => {
+    "migration-thresholc" => {
       type: "integer",
       default: "0",
       longdesc: _("How many failures may occur for this resource on a node, before this node is marked ineligible to host this resource. A value of 0 indicates that this feature is disabled.")
