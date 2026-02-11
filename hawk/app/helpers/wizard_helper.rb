@@ -49,6 +49,8 @@ module WizardHelper
     case wizard
     when "database"
       "database"
+    when "fencing"
+      "plug"
     when "file system"
       "hdd-o"
     when "nfs"
