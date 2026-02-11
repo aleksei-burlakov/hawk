@@ -326,7 +326,7 @@ module Util
     when :acl_support
       Rails.cache.fetch(:has_acl_support) {
         # full string is like "Pacemaker 2.1.5+20221208.a3f44794f-150500.6.5.8 (Build: 2.1.5+20221208.a3f44794f): agent-manpages cibsecrets ..."
-        spl = Util.safe_x('/usr/sbin/cibadmin', '-!').split(/\s+/)
+        spl = Util.safe_x('/usr/sbin/pacemakerd', '-F').split(/\s+/)
         return true if spl.include?("acls")
         
         # pacemaker > 2.1.0 always supports acls (though doesn't display the acls flag)

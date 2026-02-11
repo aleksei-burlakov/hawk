@@ -50,7 +50,7 @@ class Report
     source = hb_report.path if File.directory?(hb_report.path)
 
     pcmk_version = nil
-    m = Util.safe_x('/usr/sbin/cibadmin', '-!').match(/^Pacemaker ([^ ]+) \(Build: ([^)]+)\)/)
+    m = Util.safe_x('/usr/sbin/pacemakerd', '-F').match(/^Pacemaker ([^ ]+) \(Build: ([^)]+)\)/)
     pcmk_version = "#{m[1]}-#{m[2]}" if m
 
     [].tap do |peinputs|
