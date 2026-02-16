@@ -26,7 +26,7 @@ minimal implementation (workflow):
     
 other setup:
   - walkthrough of initial cluster setup options:
-    - STONITH enabled / STONITH resource configured
+    - FENCING enabled / FENCING resource configured
     - stickiness etc.
 
 Experience is thus:

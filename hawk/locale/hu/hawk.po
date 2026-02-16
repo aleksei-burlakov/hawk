@@ -2092,9 +2092,9 @@ msgid "Node \"%{node}\" is UNCLEAN and needs to be fenced."
 msgstr "A(z) \"%{node}\" csomópont UNCLEAN állapotú, ezért el kell keríteni."
 
 #: ../app/models/cib.rb:1083
-msgid "STONITH is disabled. For normal cluster operation, STONITH is required."
+msgid "FENCING is disabled. For normal cluster operation, FENCING is required."
 msgstr ""
-"A STONITH le van tiltva. A fürt rendes működéséhez szükséges a STONITH."
+"A FENCING le van tiltva. A fürt rendes működéséhez szükséges a FENCING."
 
 #: ../app/models/cib.rb:1210 ../app/models/cib.rb:1214
 msgid "DRBD disk %{d} is %{s} on %{n}"
@@ -3085,8 +3085,8 @@ msgid "Copy"
 msgstr "Másolás"
 
 #: ../app/views/profiles/edit.html.erb:8
-msgid "Display warning if STONITH is disabled"
-msgstr "Figyelmeztetés megjelenítése a STONITH letiltása esetén"
+msgid "Display warning if FENCING is disabled"
+msgstr "Figyelmeztetés megjelenítése a FENCING letiltása esetén"
 
 #: ../app/views/reports/display.html.erb:8
 #: ../app/views/reports/index.html.erb:107

@@ -24,11 +24,11 @@ BIG_TIMEOUT = 6
 class Error:
     MAINT_TOGGLE_ERR = "Could not find Switch to Maintenance toggle button for node"
     PRIMITIVE_TARGET_ROLE_ERR = "Couldn't find value [Started] for primitive target-role"
-    STONITH_ERR = "Couldn't find stonith-sbd menu to place it in maintenance mode"
+    FENCING_ERR = "Couldn't find stonith-sbd menu to place it in maintenance mode"
     COOL_PRIMITIVE_ERR = "Couldn't find cool_primitive menu to edit"
     HOT_PRIMITIVE_ERR = "Couldn't find hot_primitive menu to edit"
     DUMMY_PRIMITIVE_ERR = "Couldn't find hot_primitive menu to edit"
-    STONITH_ERR_OFF = "Could not find Disable Maintenance Mode button for stonith-sbd"
+    FENCING_ERR_OFF = "Could not find Disable Maintenance Mode button for stonith-sbd"
     CRM_CONFIG_ADVANCED_ATTRIBUTES = "crm_config dropdown box shows the advanced attributes, but shouldn't"
 
 
@@ -53,7 +53,7 @@ class Xpath:
     HREF_CRM_CONFIG_EDIT = '//a[contains(@href, "crm_config/edit")]'
     HREF_CRM_CONFIG_FENCE_REACTION = '//option[contains(@value, "fence-reaction")]'
     HREF_CRM_CONFIG_NO_QUORUM_POLICY = '//option[contains(@value, "no-quorum-policy")]'
-    HREF_CRM_CONFIG_STONITH_ACTION = '//option[contains(@value, "stonith-action")]'
+    HREF_CRM_CONFIG_FENCING_ACTION = '//option[contains(@value, "stonith-action")]'
     HREF_CRM_CONFIG_NODE_HEALTH_STRATEGY = '//option[contains(@value, "node-health-strategy")]'
     HREF_CRM_CONFIG_NODE_PLACEMENT_STRATEGY = '//option[contains(@value, "placement-strategy")]'
     HREF_CONSTRAINTS = '//a[contains(@href, "#constraints")]'
@@ -71,13 +71,13 @@ class Xpath:
     NODE_READY = '//a[contains(@href, "ready") and contains(@title, "Switch to ready")]'
     OCF_OPT_LIST = '//option[contains(@value, "ocf")]'
     OPERATIONS = '//*[@id="nodes"]/div[1]/div[2]/div[2]/table/tbody/tr[1]/td[5]/div/div/button'
-    OPT_STONITH = '//option[contains(@value, "stonith-sbd")]'
+    OPT_FENCING = '//option[contains(@value, "stonith-sbd")]'
     RESOURCES_TYPES = '//a[contains(@href, "resources/types")]'
     RSC_OK_SUBMIT = '//input[contains(@class, "submit")]'
     RSC_ROWS = '//*[@id="resources"]/div[1]/div[2]/div[2]/table/tbody/tr'
-    STONITH_CHKBOX = '//input[contains(@type, "checkbox") and contains(@value, "stonith-sbd")]'
-    STONITH_MAINT_OFF = '//a[contains(@href, "stonith-sbd") and contains(@title, "Disable Maintenance Mode")]'
-    STONITH_MAINT_ON = '//a[contains(@href, "stonith-sbd/maintenance_on")]'
+    FENCING_CHKBOX = '//input[contains(@type, "checkbox") and contains(@value, "stonith-sbd")]'
+    FENCING_MAINT_OFF = '//a[contains(@href, "stonith-sbd") and contains(@title, "Disable Maintenance Mode")]'
+    FENCING_MAINT_ON = '//a[contains(@href, "stonith-sbd/maintenance_on")]'
     COOL_PRIMITIVE_EDIT = '//a[contains(@href, "cool_primitive/edit")]'
     HOT_PRIMITIVE_EDIT = '//a[contains(@href, "hot_primitive/edit")]'
     DUMMY_PRIMITIVE_EDIT = '//a[contains(@href, "dummy_primitive/edit")]'
@@ -341,7 +341,7 @@ class HawkTestDriver:
 
     def test_set_stonith_maintenance(self):
         '''
-        Set STONITH/sbd in maintenance. Assumes stonith-sbd resource is the last one listed on the
+        Set FENCING/sbd in maintenance. Assumes stonith-sbd resource is the last one listed on the
         resources table
         Returns:
             boolean: True if successful or False if failed
@@ -352,8 +352,8 @@ class HawkTestDriver:
             if not totalrows:
                 totalrows = 1
             print("TEST: test_set_stonith_maintenance: Placing stonith-sbd in maintenance")
-            self.check_and_click_by_xpath(Error.STONITH_ERR, [Xpath.DROP_DOWN_FORMAT.format(totalrows),
-                                                              Xpath.STONITH_MAINT_ON, Xpath.COMMIT_BTN_DANGER])
+            self.check_and_click_by_xpath(Error.FENCING_ERR, [Xpath.DROP_DOWN_FORMAT.format(totalrows),
+                                                              Xpath.FENCING_MAINT_ON, Xpath.COMMIT_BTN_DANGER])
         if self.verify_success():
             print("INFO: stonith-sbd successfully placed in maintenance mode")
             return True
@@ -362,12 +362,12 @@ class HawkTestDriver:
 
     def test_disable_stonith_maintenance(self):
         '''
-        Disable maintenance in STONITH/sbd
+        Disable maintenance in FENCING/sbd
         Returns:
             boolean: True if successful or False if failed
         '''
         print("TEST: test_disable_stonith_maintenance: Re-activating stonith-sbd")
-        self.check_and_click_by_xpath(Error.STONITH_ERR_OFF, [Xpath.STONITH_MAINT_OFF, Xpath.COMMIT_BTN_DANGER])
+        self.check_and_click_by_xpath(Error.FENCING_ERR_OFF, [Xpath.FENCING_MAINT_OFF, Xpath.COMMIT_BTN_DANGER])
         if self.verify_success():
             print("INFO: stonith-sbd successfully reactivated")
             return True
@@ -851,7 +851,7 @@ class HawkTestDriver:
             return False
         elem.send_keys(clone)
         self.check_and_click_by_xpath(f"while adding clone [{clone}]",
-                                      [Xpath.CLONE_CHILD, Xpath.OPT_STONITH, Xpath.TARGET_ROLE_FORMAT.format('clone'),
+                                      [Xpath.CLONE_CHILD, Xpath.OPT_FENCING, Xpath.TARGET_ROLE_FORMAT.format('clone'),
                                        Xpath.TARGET_ROLE_STARTED, Xpath.RSC_OK_SUBMIT])
         if self.verify_success():
             print(f"INFO: Successfully added clone [{clone}] of [stonith-sbd]")
@@ -878,7 +878,7 @@ class HawkTestDriver:
             return False
         elem.send_keys(group)
         self.check_and_click_by_xpath(f"while adding group [{group}]",
-                                      [Xpath.STONITH_CHKBOX, Xpath.TARGET_ROLE_FORMAT.format('group'),
+                                      [Xpath.FENCING_CHKBOX, Xpath.TARGET_ROLE_FORMAT.format('group'),
                                        Xpath.TARGET_ROLE_STARTED, Xpath.RSC_OK_SUBMIT])
         if self.verify_success():
             print(f"INFO: Successfully added group [{group}] of [stonith-sbd]")
@@ -969,7 +969,7 @@ class HawkTestDriver:
         # and a select in the crm_attribute. Let's not overengineer.)
         elem.click()
         for xref in [Xpath.HREF_CRM_CONFIG_NO_QUORUM_POLICY,
-                    Xpath.HREF_CRM_CONFIG_STONITH_ACTION,
+                    Xpath.HREF_CRM_CONFIG_FENCING_ACTION,
                     Xpath.HREF_CRM_CONFIG_NODE_HEALTH_STRATEGY,
                     Xpath.HREF_CRM_CONFIG_NODE_PLACEMENT_STRATEGY]:
             self.check_and_click_by_xpath(f'Couldn\'t find {xref} resource in the drop-down list',

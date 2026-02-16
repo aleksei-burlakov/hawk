@@ -27,7 +27,7 @@ There are five conceptual areas of functionality:
 # "Scaffolding" (init script, user authentication, build infrastructure, internationalization, etc.)
 # Cluster Status Display (what resources/nodes are online, current status thereof, history, etc.)
 # Basic Operator Tasks (start/stop resources, online/offline nodes, etc.)
-# Configure Cluster (add/remove node/resource, set cluster options, configure STONITH, etc.)
+# Configure Cluster (add/remove node/resource, set cluster options, configure FENCING, etc.)
 # Explore Failure Scenarios (see what ''would'' happen if a resource/node failed)
 
 In terms of implementation, these all overlap (management tasks build on the status display, everything builds on scaffolding), but it's useful to break them up like this because:
@@ -154,7 +154,7 @@ Areas for further work:
 == Configure Cluster ==
 
 * Create/Delete Resource
-* Configure STONITH (just create a STONITH resource, right?)
+* Configure FENCING (just create a FENCING resource, right?)
 * Create/Delete Groups, Clones, M/S resources
 * Configure cluster properties
 * Configure op & resource defaults ''(not yet implemented)''

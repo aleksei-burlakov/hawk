@@ -2078,9 +2078,9 @@ msgid "Node \"%{node}\" is UNCLEAN and needs to be fenced."
 msgstr "\"%{node}\" 노드가 불완전하며 펜스되어야 합니다."
 
 #: ../app/models/cib.rb:1083
-msgid "STONITH is disabled. For normal cluster operation, STONITH is required."
+msgid "FENCING is disabled. For normal cluster operation, FENCING is required."
 msgstr ""
-"STONITH가 비활성화되었습니다. 클러스터가 정상적으로 작동하려면 STONITH가 필요"
+"FENCING가 비활성화되었습니다. 클러스터가 정상적으로 작동하려면 FENCING가 필요"
 "합니다."
 
 #: ../app/models/cib.rb:1210 ../app/models/cib.rb:1214
@@ -3042,8 +3042,8 @@ msgid "Copy"
 msgstr "복사"
 
 #: ../app/views/profiles/edit.html.erb:8
-msgid "Display warning if STONITH is disabled"
-msgstr "STONITH가 비활성화된 경우 경고 표시"
+msgid "Display warning if FENCING is disabled"
+msgstr "FENCING가 비활성화된 경우 경고 표시"
 
 #: ../app/views/reports/display.html.erb:8
 #: ../app/views/reports/index.html.erb:107

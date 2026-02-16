@@ -2081,8 +2081,8 @@ msgid "Node \"%{node}\" is UNCLEAN and needs to be fenced."
 msgstr "ノード「%{node}」は非クリーンであり、フェンシングする必要があります。"
 
 #: ../app/models/cib.rb:1083
-msgid "STONITH is disabled. For normal cluster operation, STONITH is required."
-msgstr "STONITHが無効です。通常のクラスタ操作については、STONITH が必要です。"
+msgid "FENCING is disabled. For normal cluster operation, FENCING is required."
+msgstr "FENCINGが無効です。通常のクラスタ操作については、FENCING が必要です。"
 
 #: ../app/models/cib.rb:1210 ../app/models/cib.rb:1214
 msgid "DRBD disk %{d} is %{s} on %{n}"
@@ -3051,8 +3051,8 @@ msgid "Copy"
 msgstr "コピー"
 
 #: ../app/views/profiles/edit.html.erb:8
-msgid "Display warning if STONITH is disabled"
-msgstr "STONITHが無効な場合に警告を表示"
+msgid "Display warning if FENCING is disabled"
+msgstr "FENCINGが無効な場合に警告を表示"
 
 #: ../app/views/reports/display.html.erb:8
 #: ../app/views/reports/index.html.erb:107

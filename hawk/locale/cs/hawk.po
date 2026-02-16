@@ -2083,9 +2083,9 @@ msgid "Node \"%{node}\" is UNCLEAN and needs to be fenced."
 msgstr "Uzel %{node} není v platném stavu a je nutné jej izolovat."
 
 #: ../app/models/cib.rb:1083
-msgid "STONITH is disabled. For normal cluster operation, STONITH is required."
+msgid "FENCING is disabled. For normal cluster operation, FENCING is required."
 msgstr ""
-"Metoda STONITH je zakázána. Metoda STONITH je požadována k normálnímu "
+"Metoda FENCING je zakázána. Metoda FENCING je požadována k normálnímu "
 "provozu clusteru."
 
 #: ../app/models/cib.rb:1210 ../app/models/cib.rb:1214
@@ -3073,8 +3073,8 @@ msgid "Copy"
 msgstr "Kopírovat"
 
 #: ../app/views/profiles/edit.html.erb:8
-msgid "Display warning if STONITH is disabled"
-msgstr "Zobrazit upozornění, pokud je zakázána metoda STONITH"
+msgid "Display warning if FENCING is disabled"
+msgstr "Zobrazit upozornění, pokud je zakázána metoda FENCING"
 
 #: ../app/views/reports/display.html.erb:8
 #: ../app/views/reports/index.html.erb:107

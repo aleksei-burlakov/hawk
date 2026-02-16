@@ -1083,9 +1083,9 @@ var locales = locales || {}; locales['pt-BR'] = {
         null,
         "Função"
       ],
-      "STONITH Enabled": [
+      "FENCING Enabled": [
         null,
-        "STONITH Habilitado"
+        "FENCING Habilitado"
       ],
       "SUSE, LLC": [
         null,

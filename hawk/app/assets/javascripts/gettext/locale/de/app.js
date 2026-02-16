@@ -1083,9 +1083,9 @@ var locales = locales || {}; locales['de'] = {
         null,
         "Rolle"
       ],
-      "STONITH Enabled": [
+      "FENCING Enabled": [
         null,
-        "STONITH aktiviert"
+        "FENCING aktiviert"
       ],
       "SUSE, LLC": [
         null,

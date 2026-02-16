@@ -2075,8 +2075,8 @@ msgid "Node \"%{node}\" is UNCLEAN and needs to be fenced."
 msgstr "العقدة \"%{node}\" غير صحيحة وتحتاج إلى وضع فاصل."
 
 #: ../app/models/cib.rb:1083
-msgid "STONITH is disabled. For normal cluster operation, STONITH is required."
-msgstr "تم تعطيل STONITH. STONITH  مطلوب لعملية مجموعة متماثلة عادية."
+msgid "FENCING is disabled. For normal cluster operation, FENCING is required."
+msgstr "تم تعطيل FENCING. FENCING  مطلوب لعملية مجموعة متماثلة عادية."
 
 #: ../app/models/cib.rb:1210 ../app/models/cib.rb:1214
 msgid "DRBD disk %{d} is %{s} on %{n}"
@@ -3041,8 +3041,8 @@ msgid "Copy"
 msgstr "نسخ"
 
 #: ../app/views/profiles/edit.html.erb:8
-msgid "Display warning if STONITH is disabled"
-msgstr "عرض تحذير بأنه تم تعطيل STONITH"
+msgid "Display warning if FENCING is disabled"
+msgstr "عرض تحذير بأنه تم تعطيل FENCING"
 
 #: ../app/views/reports/display.html.erb:8
 #: ../app/views/reports/index.html.erb:107

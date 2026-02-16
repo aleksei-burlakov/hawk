@@ -2097,9 +2097,9 @@ msgstr ""
 "Knooppunt \"%{node}\" is VERVUILD. Er moet een fence op worden toegepast."
 
 #: ../app/models/cib.rb:1083
-msgid "STONITH is disabled. For normal cluster operation, STONITH is required."
+msgid "FENCING is disabled. For normal cluster operation, FENCING is required."
 msgstr ""
-"STONITH is uitgeschakeld. Voor een normale clusterbewerking is STONITH "
+"FENCING is uitgeschakeld. Voor een normale clusterbewerking is FENCING "
 "vereist."
 
 #: ../app/models/cib.rb:1210 ../app/models/cib.rb:1214
@@ -3100,8 +3100,8 @@ msgid "Copy"
 msgstr "Kopiëren"
 
 #: ../app/views/profiles/edit.html.erb:8
-msgid "Display warning if STONITH is disabled"
-msgstr "Waarschuwing weergeven als STONITH wordt uitgeschakeld"
+msgid "Display warning if FENCING is disabled"
+msgstr "Waarschuwing weergeven als FENCING wordt uitgeschakeld"
 
 #: ../app/views/reports/display.html.erb:8
 #: ../app/views/reports/index.html.erb:107

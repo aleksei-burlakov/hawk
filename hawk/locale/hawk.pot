@@ -1497,7 +1497,7 @@ msgid "Node \"%{node}\" is UNCLEAN and needs to be fenced."
 msgstr ""
 
 #: ../app/models/cib.rb:1073
-msgid "STONITH is disabled. For normal cluster operation, STONITH is required."
+msgid "FENCING is disabled. For normal cluster operation, FENCING is required."
 msgstr ""
 
 #: ../app/models/clone.rb:10
