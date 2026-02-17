@@ -2102,9 +2102,9 @@ msgstr ""
 "Knoten \"%{node}\" ist fehlerhaft (UNCLEAN) und muss eingegrenzt werden."
 
 #: ../app/models/cib.rb:1083
-msgid "STONITH is disabled. For normal cluster operation, STONITH is required."
+msgid "FENCING is disabled. For normal cluster operation, FENCING is required."
 msgstr ""
-"STONITH ist deaktiviert. Für den normalen Clusterbetrieb ist STONITH "
+"FENCING ist deaktiviert. Für den normalen Clusterbetrieb ist FENCING "
 "erforderlich."
 
 #: ../app/models/cib.rb:1210 ../app/models/cib.rb:1214
@@ -3105,8 +3105,8 @@ msgid "Copy"
 msgstr "Kopieren"
 
 #: ../app/views/profiles/edit.html.erb:8
-msgid "Display warning if STONITH is disabled"
-msgstr "Warnung anzeigen, wenn STONITH deaktiviert ist"
+msgid "Display warning if FENCING is disabled"
+msgstr "Warnung anzeigen, wenn FENCING deaktiviert ist"
 
 #: ../app/views/reports/display.html.erb:8
 #: ../app/views/reports/index.html.erb:107

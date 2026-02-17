@@ -2101,9 +2101,9 @@ msgid "Node \"%{node}\" is UNCLEAN and needs to be fenced."
 msgstr "El nodo \"%{node}\" tiene el estado UNCLEAN y es necesario aislarlo."
 
 #: ../app/models/cib.rb:1083
-msgid "STONITH is disabled. For normal cluster operation, STONITH is required."
+msgid "FENCING is disabled. For normal cluster operation, FENCING is required."
 msgstr ""
-"STONITH está inhabilitado. STONITH es necesario para el funcionamiento "
+"FENCING está inhabilitado. FENCING es necesario para el funcionamiento "
 "normal del clúster."
 
 #: ../app/models/cib.rb:1210 ../app/models/cib.rb:1214
@@ -3096,8 +3096,8 @@ msgid "Copy"
 msgstr "Copiar"
 
 #: ../app/views/profiles/edit.html.erb:8
-msgid "Display warning if STONITH is disabled"
-msgstr "Mostrar advertencia si STONITH está inhabilitado"
+msgid "Display warning if FENCING is disabled"
+msgstr "Mostrar advertencia si FENCING está inhabilitado"
 
 #: ../app/views/reports/display.html.erb:8
 #: ../app/views/reports/index.html.erb:107

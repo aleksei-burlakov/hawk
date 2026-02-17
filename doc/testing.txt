@@ -73,7 +73,7 @@ in any of the tests.
 === Basic Management Operations
 
 _Note_: This requires a cluster with at least two nodes, a single
-primitive, a group, a clone, a promotable set, and working STONITH.
+primitive, a group, a clone, a promotable set, and working FENCING.
 We assume everything is running at the start of this test.
 
 . Log in as "hacluster".

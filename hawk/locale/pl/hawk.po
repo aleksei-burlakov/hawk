@@ -2106,9 +2106,9 @@ msgid "Node \"%{node}\" is UNCLEAN and needs to be fenced."
 msgstr "Węzeł %{node} jest NIEWYCZYSZCZONY i musi być odizolowany."
 
 #: ../app/models/cib.rb:1083
-msgid "STONITH is disabled. For normal cluster operation, STONITH is required."
+msgid "FENCING is disabled. For normal cluster operation, FENCING is required."
 msgstr ""
-"STONITH jest wyłączone. W przypadku normalnego działania klastra STONITH "
+"FENCING jest wyłączone. W przypadku normalnego działania klastra FENCING "
 "jest wymagane."
 
 #: ../app/models/cib.rb:1210 ../app/models/cib.rb:1214
@@ -3090,8 +3090,8 @@ msgid "Copy"
 msgstr "Kopiuj"
 
 #: ../app/views/profiles/edit.html.erb:8
-msgid "Display warning if STONITH is disabled"
-msgstr "Wyświetl ostrzeżenie, jeśli STONITH jest wyłączone"
+msgid "Display warning if FENCING is disabled"
+msgstr "Wyświetl ostrzeżenie, jeśli FENCING jest wyłączone"
 
 #: ../app/views/reports/display.html.erb:8
 #: ../app/views/reports/index.html.erb:107

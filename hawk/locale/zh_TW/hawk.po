@@ -2071,8 +2071,8 @@ msgid "Node \"%{node}\" is UNCLEAN and needs to be fenced."
 msgstr "節點「%{node}」未清理，需要圍籬區隔。"
 
 #: ../app/models/cib.rb:1083
-msgid "STONITH is disabled. For normal cluster operation, STONITH is required."
-msgstr "STONITH 已停用。若要正常執行叢集操作，需要啟用 STONITH。"
+msgid "FENCING is disabled. For normal cluster operation, FENCING is required."
+msgstr "FENCING 已停用。若要正常執行叢集操作，需要啟用 FENCING。"
 
 #: ../app/models/cib.rb:1210 ../app/models/cib.rb:1214
 msgid "DRBD disk %{d} is %{s} on %{n}"
@@ -3014,8 +3014,8 @@ msgid "Copy"
 msgstr "複製"
 
 #: ../app/views/profiles/edit.html.erb:8
-msgid "Display warning if STONITH is disabled"
-msgstr "若 STONITH 停用，則顯示警告"
+msgid "Display warning if FENCING is disabled"
+msgstr "若 FENCING 停用，則顯示警告"
 
 #: ../app/views/reports/display.html.erb:8
 #: ../app/views/reports/index.html.erb:107

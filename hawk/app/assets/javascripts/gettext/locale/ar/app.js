@@ -1083,9 +1083,9 @@ var locales = locales || {}; locales['ar'] = {
         null,
         "الدور"
       ],
-      "STONITH Enabled": [
+      "FENCING Enabled": [
         null,
-        "تم تمكين STONITH"
+        "تم تمكين FENCING"
       ],
       "SUSE, LLC": [
         null,

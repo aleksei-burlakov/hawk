@@ -1083,9 +1083,9 @@ var locales = locales || {}; locales['hu'] = {
         null,
         "Szerep"
       ],
-      "STONITH Enabled": [
+      "FENCING Enabled": [
         null,
-        "STONITH engedélyezve"
+        "FENCING engedélyezve"
       ],
       "SUSE, LLC": [
         null,

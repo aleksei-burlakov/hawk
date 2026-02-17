@@ -1081,9 +1081,9 @@ var locales = locales || {}; locales['ja'] = {
         null,
         "役割"
       ],
-      "STONITH Enabled": [
+      "FENCING Enabled": [
         null,
-        "STONITHが有効です"
+        "FENCINGが有効です"
       ],
       "SUSE, LLC": [
         null,

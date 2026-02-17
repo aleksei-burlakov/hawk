@@ -1081,9 +1081,9 @@ var locales = locales || {}; locales['zh-TW'] = {
         null,
         "角色"
       ],
-      "STONITH Enabled": [
+      "FENCING Enabled": [
         null,
-        "已啟用 STONITH"
+        "已啟用 FENCING"
       ],
       "SUSE, LLC": [
         null,

@@ -972,7 +972,7 @@ class Cib
             elsif operation == "stop"
               # We have a failed stop, the resource is failed (bnc#879034)
               state = :failed
-              # Also, the node is thus unclean if STONITH is enabled.
+              # Also, the node is thus unclean if FENCING is enabled.
               node[:state] = :unclean if @crm_config[:stonith_enabled]
             end
           end
@@ -1181,7 +1181,7 @@ class Cib
     end
 
     warning(
-      _("STONITH is disabled. For normal cluster operation, STONITH is required."),
+      _("FENCING is disabled. For normal cluster operation, FENCING is required."),
       link: edit_cib_crm_config_path(cib_id: @id)
     ) unless @crm_config[:stonith_enabled] || !stonithwarning
   end

@@ -2087,8 +2087,8 @@ msgid "Node \"%{node}\" is UNCLEAN and needs to be fenced."
 msgstr "Узел \"%{node}\" НЕ ОЧИЩЕН; его необходимо оградить."
 
 #: ../app/models/cib.rb:1083
-msgid "STONITH is disabled. For normal cluster operation, STONITH is required."
-msgstr "STONITH выключен. Для нормальной работы кластера необходим STONITH."
+msgid "FENCING is disabled. For normal cluster operation, FENCING is required."
+msgstr "FENCING выключен. Для нормальной работы кластера необходим FENCING."
 
 #: ../app/models/cib.rb:1210 ../app/models/cib.rb:1214
 msgid "DRBD disk %{d} is %{s} on %{n}"
@@ -3085,8 +3085,8 @@ msgid "Copy"
 msgstr "Копировать"
 
 #: ../app/views/profiles/edit.html.erb:8
-msgid "Display warning if STONITH is disabled"
-msgstr "Отображать предупреждение, если функция STONITH отключена"
+msgid "Display warning if FENCING is disabled"
+msgstr "Отображать предупреждение, если функция FENCING отключена"
 
 #: ../app/views/reports/display.html.erb:8
 #: ../app/views/reports/index.html.erb:107

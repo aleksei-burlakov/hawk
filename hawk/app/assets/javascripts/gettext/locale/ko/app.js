@@ -1081,9 +1081,9 @@ var locales = locales || {}; locales['ko'] = {
         null,
         "역할"
       ],
-      "STONITH Enabled": [
+      "FENCING Enabled": [
         null,
-        "STONITH 활성화됨"
+        "FENCING 활성화됨"
       ],
       "SUSE, LLC": [
         null,
