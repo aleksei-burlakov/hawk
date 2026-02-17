@@ -7,7 +7,6 @@ ActiveSupport::Inflector.inflections do |inflect|
   inflect.acronym "DC"
   inflect.acronym "SAP"
   inflect.acronym "NFS"
-  inflect.acronym "FENCING"
   inflect.acronym "IP"
   inflect.acronym "ID"
   inflect.acronym "LVS"
