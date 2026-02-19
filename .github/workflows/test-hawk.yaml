@@ -17,15 +17,17 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v2
+      - name: Build hawk-node image (CI)
+        run: |
+          docker build -t hawk-node -f .github/docker/hawk-node.Dockerfile .
       - name: Start cluster nodes in containers
         run: |
-          docker run -d --privileged -h node1 --name node1 --add-host node1:${IP_NODE1} --add-host node2:${IP_NODE2} ghcr.io/aleksei-burlakov/hawk-node
-          docker run -d --privileged -h node2 --name node2 --add-host node1:${IP_NODE1} --add-host node2:${IP_NODE2} ghcr.io/aleksei-burlakov/hawk-node
+          docker run -d --privileged -h node1 --name node1 --add-host node1:${IP_NODE1} --add-host node2:${IP_NODE2} hawk-node
+          docker run -d --privileged -h node2 --name node2 --add-host node1:${IP_NODE1} --add-host node2:${IP_NODE2} hawk-node
       - name: Copy hawk to the nodes
         run: |
-          cd ..
-          docker cp hawk node1:/
-          docker cp hawk node2:/
+          docker cp "$GITHUB_WORKSPACE" node1:/
+          docker cp "$GITHUB_WORKSPACE" node2:/
       - name: Compile hawk in the nodes
         run: |
           docker exec -i node1 bash -c "cd hawk && make"
@@ -34,6 +36,12 @@ jobs:
         run: |
           docker exec -i node1 bash -c "cd hawk && make install && cp scripts/sysconfig.hawk /etc/sysconfig/hawk"
           docker exec -i node2 bash -c "cd hawk && make install && cp scripts/sysconfig.hawk /etc/sysconfig/hawk"
+      - name: Run hawk as root (ok for tests)
+        run: |
+          docker exec node1 sed -i '/^User=/d' /usr/lib/systemd/system/hawk-backend.service
+          docker exec node1 sed -i '/^Group=/d' /usr/lib/systemd/system/hawk-backend.service
+          docker exec node2 sed -i '/^User=/d' /usr/lib/systemd/system/hawk-backend.service
+          docker exec node2 sed -i '/^Group=/d' /usr/lib/systemd/system/hawk-backend.service
       - name: Initialize container on the node1
         run: docker exec node1 crm cluster init -u -n cluster1 -y
       - name: Join node2 to the cluster
