@@ -2,7 +2,7 @@
 #!BuildTag: hawk_test
 # Use the repositories defined in OBS for installing packages
 #!UseOBSRepositories
-FROM	registry.opensuse.org/opensuse/leap:15.5
+FROM	registry.opensuse.org/opensuse/leap:16.0
 
 RUN	zypper -n install -y --no-recommends \
 		MozillaFirefox \
@@ -12,6 +12,7 @@ RUN	zypper -n install -y --no-recommends \
 		python3-paramiko \
 		python3-PyVirtualDisplay \
 		python3-selenium \
+		python3-packaging \
 		xauth \
 		xdpyinfo \
 		xorg-x11-fonts \
@@ -23,7 +24,7 @@ RUN	zypper -n install -y --no-recommends \
 		tar \
 		wget && \
 	zypper -n clean -a && \
-	wget -O- https://github.com/mozilla/geckodriver/releases/download/v0.32.0/geckodriver-v0.32.0-linux64.tar.gz | tar zxf - -C /usr/local/bin/
+	wget -O- https://github.com/mozilla/geckodriver/releases/download/v0.36.0/geckodriver-v0.36.0-linux64.tar.gz | tar zxf - -C /usr/local/bin/
 
 RUN	chmod +x /usr/local/bin/*
 
