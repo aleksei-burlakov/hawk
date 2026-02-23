@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-# Copyright (C) 2019 SUSE LLC
+# Copyright (C) 2026 SUSE LLC
 """HAWK GUI interface Selenium test: tests hawk GUI with Selenium using firefox or chrome"""
 
 import argparse

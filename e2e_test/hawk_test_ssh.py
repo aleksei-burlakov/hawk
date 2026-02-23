@@ -1,8 +1,8 @@
 #!/usr/bin/python3
-# Copyright (C) 2019 SUSE LLC
+# Copyright (C) 2026 SUSE LLC
 """Define SSH related functions to test the HAWK GUI"""
 
-from distutils.version import LooseVersion as Version
+from packaging.version import Version
 import paramiko
 
 

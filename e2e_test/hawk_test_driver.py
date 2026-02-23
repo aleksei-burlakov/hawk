@@ -1,10 +1,10 @@
 #!/usr/bin/python3
-# Copyright (C) 2019 SUSE LLC
+# Copyright (C) 2026 SUSE LLC
 """Define Selenium driver related functions and classes to test the HAWK GUI"""
 
 import ipaddress
 import time
-from distutils.version import LooseVersion as Version
+from packaging.version import Version
 
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
@@ -125,24 +125,26 @@ class HawkTestDriver:
             self.timeout_scale = 1
 
     def _connect(self):
-        '''
-        Private method: initialize webdriver basing on browser type
+        """
+        Private method: initialize webdriver based on browser type
         Returns:
             Instance of webdriver
-        '''
-        if self.browser in ['chrome', 'chromium']:
+        """
+        if self.browser in ["chrome", "chromium"]:
             options = webdriver.ChromeOptions()
-            options.add_argument('--no-sandbox')
-            options.add_argument('--disable-gpu')
+            options.add_argument("--no-sandbox")
+            options.add_argument("--disable-gpu")
             if self.headless:
-                options.add_argument('--headless')
-            options.add_argument('--disable-dev-shm-usage')
-            self.driver = webdriver.Chrome(chrome_options=options)
+                options.add_argument("--headless=new")
+            options.add_argument("--disable-dev-shm-usage")
+            self.driver = webdriver.Chrome(options=options)
         else:
-            profile = webdriver.FirefoxProfile()
-            profile.accept_untrusted_certs = True
-            profile.assume_untrusted_cert_issuer = True
-            self.driver = webdriver.Firefox(firefox_profile=profile)
+            options = webdriver.FirefoxOptions()
+            options.set_capability("acceptInsecureCerts", True)
+            if self.headless:
+                options.add_argument("-headless")
+            self.driver = webdriver.Firefox(options=options)
+
         self.driver.maximize_window()
         return self.driver
 
@@ -348,7 +350,7 @@ class HawkTestDriver:
         '''
         # wait for page to fully load
         if self.find_element(By.XPATH, Xpath.RSC_ROWS):
-            totalrows = len(self.driver.find_elements_by_xpath(Xpath.RSC_ROWS))
+            totalrows = len(self.driver.find_elements(By.XPATH, Xpath.RSC_ROWS))
             if not totalrows:
                 totalrows = 1
             print("TEST: test_set_stonith_maintenance: Placing stonith-sbd in maintenance")
