@@ -255,9 +255,10 @@ $(function() {
 
             if (row.fence) {
               add_operation("menu", Routes.fence_cib_node_path($('body').data('cib'), row.id), 'fence', 'plug', __('Fence'));
-              add_operation("menu", Routes.clearstate_cib_node_path($('body').data('cib'), row.id), 'clearstate', 'eraser', __('Clear state'));
-              dropdowns.push(['<li role="separator" class="divider"></li>'].join(''));
             }
+
+            add_operation("menu", Routes.clearstate_cib_node_path($('body').data('cib'), row.id), 'clearstate', 'eraser', __('Clear state'));
+            dropdowns.push(['<li role="separator" class="divider"></li>'].join(''));
 
             if (!row.remote) {
               add_operation("menu", Routes.edit_cib_node_path($('body').data('cib'), row.id), 'edit', 'pencil', __('Edit'));
