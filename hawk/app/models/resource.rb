@@ -146,8 +146,10 @@ class Resource < Record
     @id = "#{other}-#{i}"
   end
 
-  def rsc_constraints
-    outp = Util.safe_x('/usr/sbin/crm_resource', '--resource', "#{id}", '-A', '2>/dev/null')
+  def rsc_constraints_OLD
+    byebug
+    ## outp = %x[/usr/sbin/crm_resource --resource "#{id}" -A 2>/dev/null]
+    outp, err, status = Util.capture3('/usr/sbin/crm_resource', '--resource', "#{id}", '-A')
     info = {}
     outp.each_line do |l|
       l.strip!
@@ -162,6 +164,41 @@ class Resource < Record
         end
       end
     end
+    info.values
+  end
+
+  def rsc_constraints
+    byebug
+    outp, err, status = Util.capture3('/usr/sbin/crm_resource', '--resource', "#{id}", '-A')
+    info = {}
+    in_locations = false
+
+    outp.each_line do |l|
+      l.strip!
+      next if l.blank?
+
+      if l == "Locations:"
+        in_locations = true
+        next
+      end
+
+      # Assume a new section is a line that ends with a colon, e.g.
+      #
+      # Locations:
+      #  * Node delta4 (score=INFINITY, id=cli-prefer-dummy1, rsc=dummy1)
+      #  * Node delta4 (score=INFINITY, id=location1, rsc=dummy1)
+      # Resources dummy1 is colocated with:
+      #  * stonith-sbd (score=100, id=colocation1)
+      break if in_locations && l.end_with?(":")
+
+      next unless in_locations
+
+      m = l.match(/\*\s+Node\s+(\S+)\s+\(score=([^,]+), id=([^,\)]+)/)
+      if m && !info.key?(m[3])
+        info[m[3]] = { id: m[3], type: :location, score: m[2], other: m[1] }
+      end
+    end
+
     info.values
   end
 
