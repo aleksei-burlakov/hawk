@@ -4,7 +4,7 @@
 Rails.application.routes.draw do
   root to: "pages#index"
 
-  regex_safe_id = /[^\^\/\[\]"<>#%{}|\\~`;?:@=&]+/
+  regex_safe_id = /[^\^\/\[\]"<>#%{}|\\~`;?:@=&]+?/
 
   resources :cib, only: [] do
     get "/", via: [:get, :post, :options], to: "cib#show", as: ""
