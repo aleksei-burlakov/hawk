@@ -45,7 +45,7 @@
                   '<option value=""></option>',
                   '<option value="Started">Started</option>',
                   '<option value="Master">Promoted</option>',
-                  '<option value="Slave">Promotable</option>',
+                  '<option value="Slave">Unpromoted</option>',
                 '</select>',
               '</div>',
             '</div>',
