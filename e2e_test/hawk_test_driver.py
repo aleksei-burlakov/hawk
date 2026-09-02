@@ -359,7 +359,7 @@ class HawkTestDriver:
 
         # try to find the old RSC_ROWS for 10 seconds (Ruby hawk)
         # if none --> search for RSC_ROWS_NEW (Go hawk)
-        if self.find_element(By.XPATH, Xpath.RSC_ROWS, 10):
+        if self.find_element(By.XPATH, Xpath.RSC_ROWS, 20):
             totalrows = len(self.driver.find_elements(By.XPATH, Xpath.RSC_ROWS))
             if not totalrows:
                 totalrows = 1
@@ -669,7 +669,8 @@ class HawkTestDriver:
         resource_number_from_top = 1 # 1. cool_primitive, 2. fencing-sbd|stonith-sbd
         copy_btn = None
 
-        if self.find_element(By.XPATH, Xpath.RSC_ROWS, 10):
+        time.sleep(BIG_TIMEOUT)
+        if self.find_element(By.XPATH, Xpath.RSC_ROWS, 20):
             # First, click on Edit
             time.sleep(2)
             self.check_and_click_by_xpath(Error.COOL_PRIMITIVE_ERR, [Xpath.DROP_DOWN_FORMAT.format(resource_number_from_top),
@@ -724,7 +725,7 @@ class HawkTestDriver:
         resource_number_from_top = 2 # 1. cool_primitive, 2. dum_primitive, 3. fencing-sbd|stonith-sbd
         input_elem = None
 
-        if self.find_element(By.XPATH, Xpath.RSC_ROWS, 10):
+        if self.find_element(By.XPATH, Xpath.RSC_ROWS, 20):
             # First, stop the cool_primitive
             time.sleep(2)
             self.check_and_click_by_xpath(Error.DUM_PRIMITIVE_ERR,[Xpath.STOP_PRIMITIVE_FORMAT.format(resource_number_from_top),
@@ -780,7 +781,7 @@ class HawkTestDriver:
         input_elem.send_keys("dummy_primitive")
 
         # There are 2 submit buttons, one on the main page and another on the popup (the one we need)
-        submit_btn = self.find_element(By.XPATH, '//button[@type="submit" and .//i[contains(@class, "fa-save")]]', 10)
+        submit_btn = self.find_element(By.XPATH, '//button[@type="submit" and .//i[contains(@class, "fa-save")]]')
         if not submit_btn:
             print("ERROR: Couldn't find Rename-Submit button")
             return False
@@ -802,7 +803,8 @@ class HawkTestDriver:
         print("TEST: test_delete_primitive: Delete the dummy_primitive")
         resource_number_from_top = 2 # 1. cool_primitive, 2. dummy_primitive, 3. fencing-sbd|stonith-sbd
 
-        if self.find_element(By.XPATH, Xpath.RSC_ROWS, 10) or self.find_element(By.XPATH, Xpath.RSC_ROWS_NEW):
+        time.sleep(BIG_TIMEOUT)
+        if self.find_element(By.XPATH, Xpath.RSC_ROWS, 20) or self.find_element(By.XPATH, Xpath.RSC_ROWS_NEW):
             # First, click on edit
             time.sleep(2)
             self.check_and_click_by_xpath(Error.DUMMY_PRIMITIVE_ERR, [
@@ -812,13 +814,14 @@ class HawkTestDriver:
 
             # Second, click on Delete
             time.sleep(2) # wait the redirect finishes
-            delete_btn = self.find_element(By.XPATH, '//button[.//i[contains(@class, "fa-trash")]] | //a[.//i[contains(@class, "fa-trash")]]', 10)
+            delete_btn = self.find_element(By.XPATH, '//button[.//i[contains(@class, "fa-trash")]] | //a[.//i[contains(@class, "fa-trash")]]')
             if not delete_btn:
                 print("ERROR: Couldn't find Delete button")
                 return False
             delete_btn.click()
 
             # Third, confirm deleting
+            time.sleep(BIG_TIMEOUT)
             commit_btn = self.find_element(By.CLASS_NAME, "commit")
             if not commit_btn:
                 print("ERROR: Couldn't find OK-Commit button")
@@ -912,7 +915,7 @@ class HawkTestDriver:
             return False
         elem.send_keys(clone)
 
-        elem = self.find_element(By.XPATH, Xpath.CLONE_CHILD, 10)
+        elem = self.find_element(By.XPATH, Xpath.CLONE_CHILD, 20)
         if elem: # --> old ruby hawk
             elem.click()
             self.check_and_click_by_xpath(f"while adding clone [{clone}]",
