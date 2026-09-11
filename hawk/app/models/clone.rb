@@ -76,10 +76,15 @@ class Clone < Resource
             default: "0",
             longdesc: _("If not all resources can be active, the cluster will stop lower priority resources in order to keep higher priority ones active.")
           },
+          "promotable" => {
+            type: "boolean",
+            default: "true",
+            longdesc: _("Resource can be promoted (previously we would say: the resource can become a master).")
+          },
           "target-role" => {
             type: "enum",
             default: "Stopped",
-            values: ["Started", "Stopped", "Master"],
+            values: ["Started", "Stopped", "Unpromoted", "Promoted"],
             longdesc: _("What state should the cluster attempt to keep this resource in?")
           },
           "clone-max" => {
@@ -91,6 +96,31 @@ class Clone < Resource
             type: "integer",
             default: "1",
             longdesc: _("How many copies of the resource can be started on a single node. Defaults to 1.")
+          },
+          "clone-min" => {
+            type: "integer",
+            default: current_cib.nodes.length.to_s,
+            longdesc: _("")
+          },
+          "promoted-max" => {
+            type: "integer",
+            default: "1",
+            longdesc: _("")
+          },
+          "promoted-node-max" => {
+            type: "integer",
+            default: "1",
+            longdesc: _("")
+          },
+          "clone-state" => {
+            type: "string",
+            default: "",
+            longdesc: _("")
+          },
+          "description" => {
+            type: "string",
+            default: "",
+            longdesc: _("")
           },
           "notify" => {
             type: "boolean",

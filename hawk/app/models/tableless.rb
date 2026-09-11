@@ -89,6 +89,11 @@ class Tableless
       default: "false",
       longdesc: _("Resources in maintenance mode are not monitored by the cluster.")
     },
+    "interval-origin" => {
+      type: "string",
+      default: "",
+      longdesc: _("or a recurring action, schedule the action for this ISO 8601 time plus a multiple of the action's interval instead of immediately after the resource gains the monitored role.")
+    },
     "migration-threshold" => {
       type: "integer",
       default: "0",
@@ -102,7 +107,7 @@ class Tableless
     "multiple-active" => {
       type: "enum",
       default: "stop_start",
-      values: ["block", "stop_only", "stop_start"],
+      values: ["block", "stop_only", "stop_start", "stop_unexpected"],
       longdesc: _("What should the cluster do if it ever finds the resource active on more than one node?")
     },
     "failure-timeout" => {
@@ -118,7 +123,7 @@ class Tableless
     "target-role" => {
       type: "enum",
       default: "Stopped",
-      values: ["Started", "Stopped", "Master"],
+      values: ["Started", "Stopped", "Unpromoted", "Promoted"],
       longdesc: _("What state should the cluster attempt to keep this resource in?")
     },
     "restart-type" => {
@@ -133,8 +138,14 @@ class Tableless
     "requires" => {
       type: "enum",
       default: "fencing",
-      values: ["nothing", "quorum", "fencing"],
+      values: ["nothing", "quorum", "fencing", "unfencing"],
       longdesc: _("Conditions under which the resource can be started.")
+    },
+    "provides" => {
+      type: "enum",
+      default: "",
+      values: ["unfencing"],
+      longdesc: _("A special capability provided by a fencing resource. Currently, the only meaningful capability is unfencing.")
     },
     "remote-node" => {
       type: "string",
@@ -155,6 +166,21 @@ class Tableless
       type: "string",
       default: "60s",
       longdesc: _("How long before a pending guest connection will time out.")
+    },
+    "critical" => {
+      type: "boolean",
+      default: "true",
+      longdesc: _("Use this value as the default for influence in colocation constraints involving this resource and in implicit colocation constraints created for groups.")
+    },
+    "allow-unhealthy-nodes" => {
+      type: "boolean",
+      default: "false",
+      longdesc: _("Whether the resource may run on a node even if the node's health score would otherwise prevent it.")
+    },
+    "container-attribute-target" => {
+      type: "string",
+      default: "",
+      longdesc: _("Where to check user-defined node attributes. The value host selects the underlying physical host; any other value selects the local node.")
     }
   }.freeze
 

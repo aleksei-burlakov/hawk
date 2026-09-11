@@ -90,8 +90,9 @@ class Xpath:
 
 # Move out long strings just to make the code neater
 class LongLiterals:
-    RSC_DEFAULT_ATTRIBUTES='allow-migrate\ndescription\nfailure-timeout\nis-managed\nmaintenance\nmigration-threshold\nmultiple-active\n\
-priority\nremote-addr\nremote-connect-timeout\nremote-node\nremote-port\nrequires\nresource-stickiness\nrestart-type\ntarget-role'
+    RSC_DEFAULT_ATTRIBUTES='allow-migrate\nallow-unhealthy-nodes\ncontainer-attribute-target\ncritical\ndescription\ninterval-origin\n\
+failure-timeout\nis-managed\nmaintenance\nmigration-threshold\nmultiple-active\npriority\nprovides\nremote-addr\nremote-connect-timeout\n\
+remote-node\nremote-port\nrequires\nresource-stickiness\nrestart-type\ntarget-role'
     OP_DEFAULT_ATTRIBUTES='timeout\nrecord-pending\ndescription\nenabled\ninterval\ninterval-origin\non-fail\nrequires\nrole\nstart-delay'
     CRM_CONFIG_ATTRIBUTES='batch-limit\ncluster-delay\ncluster-ipc-limit\ncluster-name\ncluster-recheck-interval\nconcurrent-fencing\n\
 dc-deadtime\nenable-acl\nenable-startup-probes\nfence-reaction\nload-threshold\nmaintenance-mode\nmigration-limit\nno-quorum-policy\n\
