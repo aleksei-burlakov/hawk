@@ -27,7 +27,7 @@ RUN systemctl enable sshd
 RUN cp /usr/share/hawk/Gemfile* /
 
 # no need for the hawk itself, it should be copied in the git workflow
-RUN rm -rf /usr/share/hawk /etc/sysconfig/hawk
+RUN rm -rf /usr/share/hawk
 
 COPY *.patch /
 

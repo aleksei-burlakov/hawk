@@ -138,7 +138,23 @@ jobs:
 
       - name: Install hawk in the nodes
         run: |
-          docker exec -i node1 bash -c "cd hawk && make install && cp scripts/sysconfig.hawk /etc/sysconfig/hawk"
+          docker exec -i node1 bash -c "cd hawk && make && make install"
+
+      - name: Restore the /usr/share/hawk permissions
+        run: |
+          docker exec -i node1 bash -c "restorecon -R /usr/share/hawk"
+
+     - name: Check /usr/share/hawk permissions
+        run: |
+          docker exec -i node1 bash -c "cd /usr/share/hawk && ls -lZ * && ls -lZ bin/"
+
+     - name: Unset the GEM_HOME to enable the system gem files
+        run: |
+          docker exec -i node1 bash -c "unset GEM_HOME"
+
+     - name: Check the GEM_HOME is unset
+        run: |
+          docker exec -i node1 bash -c "echo $GEM_HOME"
 
       - name: Initialize container on the node1
         run: |
@@ -151,6 +167,10 @@ jobs:
       - name: Create a stonith-sbd device
         run: |
           docker exec node1 crm configure primitive fencing-sbd ocf:pacemaker:Dummy
+
+      - name: Check status of cluster
+        run: |
+          docker exec node1 crm status
 
       - name: Run the functional test
         run: |
